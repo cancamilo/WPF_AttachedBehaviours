@@ -1,0 +1,41 @@
+﻿<UserControl xmlns:ig="http://schemas.infragistics.com/xaml"  x:Class="MultiDeviceTest.InfraPlotControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MultiDeviceTest"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <ig:XamDataChart x:Name="DataChart" Margin="5"
+                           VerticalZoomable="True" VerticalZoombarVisibility="Visible"
+                           HorizontalZoomable="True" HorizontalZoombarVisibility="Visible"
+                           RenderOptions.EdgeMode="Aliased"
+                           RenderOptions.BitmapScalingMode="LowQuality"
+                           WindowResponse="Immediate" >
+            <ig:XamDataChart.Axes>
+                <ig:CategoryXAxis x:Name="categoryXAxis" Label="{}{Date:mm:ss}">
+                    <ig:CategoryXAxis.LabelSettings>
+                        <ig:AxisLabelSettings Location="OutsideBottom" Extent="45"
+                                              VerticalAlignment="Center" Visibility="Visible" />
+                    </ig:CategoryXAxis.LabelSettings>                    
+                </ig:CategoryXAxis>
+                <ig:NumericYAxis x:Name="numericYAxis" MinimumValue="-0.001" MaximumValue="0.001">
+                    <ig:NumericYAxis.LabelSettings>
+                        <ig:AxisLabelSettings Location="OutsideLeft" Extent="60" Visibility="Visible" />
+                    </ig:NumericYAxis.LabelSettings>
+                </ig:NumericYAxis>
+            </ig:XamDataChart.Axes>
+            <!--<ig:XamDataChart.Series>
+                <ig:LineSeries Title="Infragistics Chart"
+                               ValueMemberPath="Y" MarkerType="None"
+                               ItemsSource="{Binding PlotSeries}"
+                               Resolution="1"
+                               XAxis="{Binding ElementName=categoryXAxis}"
+                               YAxis="{Binding ElementName=numericYAxis}"
+                               Thickness="2.5" />
+            </ig:XamDataChart.Series>-->
+        </ig:XamDataChart>
+        
+    </Grid>
+</UserControl>

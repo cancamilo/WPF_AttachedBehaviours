@@ -1,0 +1,99 @@
+﻿<Window x:Class="MultiDeviceTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiDeviceTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        Closed="Window_Closed">
+    <DockPanel DataContext="{Binding MainViewModel, Source={StaticResource Locator}}" LastChildFill="True">
+        <Button  DockPanel.Dock="Top" Command="{Binding LoadDevicesCommand}" MaxWidth="200" HorizontalAlignment="Left" Margin="0,0,0,10">
+            Load Devices
+        </Button>
+        <Button  DockPanel.Dock="Top" Command="{Binding StartDevicesCommand}" MaxWidth="200" HorizontalAlignment="Left" Margin="0,0,0,10">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsRunning}" Value="True">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsRunning}" Value="False">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </Style.Triggers>                                       
+                </Style>
+            </Button.Style>
+            Start Devices
+        </Button>
+        <Button DockPanel.Dock="Top" Command="{Binding StopDevicesCommand}" MaxWidth="200" HorizontalAlignment="Left" Margin="0,0,0,10">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsRunning}" Value="True">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsRunning}" Value="False">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            Stop Devices
+        </Button>
+        <ListView DockPanel.Dock="Top" ItemsSource="{Binding DeviceList}" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,10">
+            <ListView.ItemTemplate>
+                <DataTemplate>                    
+                    <DockPanel MinWidth="400" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding DeviceID}" Margin="0,0,10,0"/>                        
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding PowerValue}" TextAlignment="Right"/>
+                    </DockPanel>                    
+                </DataTemplate>            
+            </ListView.ItemTemplate>            
+        </ListView>
+        <DockPanel DockPanel.Dock="Top">
+            <StackPanel x:Name="settignsDock">                
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Device 1" Margin="0,0,15,0"/>
+                    <ComboBox x:Name="selection1" MinWidth="70" Margin="0,0,15,0" 
+                              ItemsSource="{Binding DeviceList}" 
+                              SelectedIndex="{Binding FirstSelection}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SerialNumber}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Device 2" Margin="0,0,15,0"/>
+                    <ComboBox x:Name="selection2" MinWidth="70" Margin="0,0,15,0" 
+                              ItemsSource="{Binding DeviceList}" 
+                              SelectedIndex="{Binding SecondSelection}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SerialNumber}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>                    
+                </StackPanel>                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Operation" Margin="0,0,15,0"/>
+                    <ComboBox Margin="0,0,15,0" SelectedIndex="{Binding SelectedOperation}">
+                        <TextBlock Text="Add"/>
+                        <TextBlock Text="Substract"/>
+                        <TextBlock Text="Multiply"/>
+                    </ComboBox>                    
+                </StackPanel>
+                <TextBlock DockPanel.Dock="Top" Text="Result" FontSize="25" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock DockPanel.Dock="Top" Text="{Binding OperationResult}" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Separator Width="10" BorderThickness="2" BorderBrush="Black"></Separator>
+            <DockPanel x:Name="resultDock">
+                <!--<local:PlotControl DockPanel.Dock="Top"/>-->
+                <local:InfraPlotControl DockPanel.Dock="Top"/>
+            </DockPanel>
+        </DockPanel>                    
+        
+    </DockPanel>
+</Window>

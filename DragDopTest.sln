@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragDopTest", "DragDopTest\DragDopTest.csproj", "{189DBA70-D22E-4FC7-937F-B5455EAB07BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiDeviceTest", "MultiDeviceTest\MultiDeviceTest.csproj", "{35564EDE-2C85-4083-B626-AF3E7E0F5CC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{189DBA70-D22E-4FC7-937F-B5455EAB07BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{189DBA70-D22E-4FC7-937F-B5455EAB07BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{189DBA70-D22E-4FC7-937F-B5455EAB07BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{189DBA70-D22E-4FC7-937F-B5455EAB07BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35564EDE-2C85-4083-B626-AF3E7E0F5CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35564EDE-2C85-4083-B626-AF3E7E0F5CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35564EDE-2C85-4083-B626-AF3E7E0F5CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35564EDE-2C85-4083-B626-AF3E7E0F5CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
