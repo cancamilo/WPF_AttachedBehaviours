@@ -13,6 +13,15 @@ namespace MultiDeviceTest.Behaviours
 {
     public class ChartSeriesSourceBehaviour : Behavior<XamDataChart>
     {
+        public ChartSeriesSourceBehaviour ()
+        {
+            Console.WriteLine();
+        }
+
+        protected override void OnAttached ()
+        {
+            base.OnAttached();
+        }
 
         public IDictionary ChartSeries
         {
@@ -59,11 +68,16 @@ namespace MultiDeviceTest.Behaviours
                 foreach(var item in newDic)
                 {
                     // TODO: key needed for adding additional information to the chart, such as legends, markers, colors, etc.
-
                     var list = ((KeyValuePair<string, List<TimePoint>>) item).Value;
                     LineSeries serie = new LineSeries();
+                    serie.XAxis = AssociatedObject.Axes[0] as CategoryXAxis;
+                    serie.YAxis = AssociatedObject.Axes[1] as NumericYAxis;
+                    serie.MarkerType = MarkerType.None;
+                    serie.Thickness = 1.0;
+                    serie.Resolution = 2.0;
+                    serie.ValueMemberPath = "Y";
                     serie.ItemsSource = list;
-                    seriesBase.Add(serie);                  
+                    seriesBase.Add(serie);                                      
                 }
             }
         }

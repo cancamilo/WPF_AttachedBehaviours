@@ -128,6 +128,7 @@
     </ApplicationDefinition>
     <Compile Include="Behaviours\ChartSeriesSourceBehaviour.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="General\ObservableDictionary.cs" />
     <Compile Include="HistogramControl.xaml.cs">
       <DependentUpon>HistogramControl.xaml</DependentUpon>
     </Compile>

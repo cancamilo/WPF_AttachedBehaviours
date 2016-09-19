@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MultiDeviceTest"
+             xmlns:behaviours="clr-namespace:MultiDeviceTest.Behaviours"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -13,6 +15,9 @@
                            RenderOptions.EdgeMode="Aliased"
                            RenderOptions.BitmapScalingMode="LowQuality"
                            WindowResponse="Immediate" >
+            <i:Interaction.Behaviors>
+                <behaviours:ChartSeriesSourceBehaviour ChartSeries="{Binding Series}"/>
+            </i:Interaction.Behaviors>
             <ig:XamDataChart.Axes>
                 <ig:CategoryXAxis x:Name="categoryXAxis" Label="{}{Date:mm:ss}">
                     <ig:CategoryXAxis.LabelSettings>
